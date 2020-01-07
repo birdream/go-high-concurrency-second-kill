@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	rbq := RabbitMQ.NewRabbitSimple("imooc-sub-pub")
+	rbq := RabbitMQ.NewRabbitMQPubSub("newProduct")
 
 	for i := 0; i < 100; i++ {
 		rbq.PublishPub("subscribe the " + strconv.Itoa(i) + " message")

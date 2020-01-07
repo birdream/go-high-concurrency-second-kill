@@ -143,8 +143,7 @@ func (r *RabbitMQ) ConsumeSimple() {
 	<-forever
 }
 
-// PublishPub module of working
-// it can publish message to all worker
+// PublishPub model of publish/subscribe
 func (r *RabbitMQ) PublishPub(message string) {
 	err := r.channel.ExchangeDeclare(
 		r.Exchange,
@@ -186,6 +185,7 @@ func NewRabbitMQPubSub(exchangeName string) *RabbitMQ {
 	return rabbitmq
 }
 
+// RecieveSub subscriber start to receive message
 func (r *RabbitMQ) RecieveSub() {
 	err := r.channel.ExchangeDeclare(
 		r.Exchange,
