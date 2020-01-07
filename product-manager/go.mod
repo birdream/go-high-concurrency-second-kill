@@ -20,6 +20,7 @@ require (
 	github.com/kataras/iris v11.1.1+incompatible
 	github.com/klauspost/compress v1.9.7 // indirect
 	github.com/microcosm-cc/bluemonday v1.0.2 // indirect
+	github.com/prometheus/common v0.7.0
 	github.com/ryanuber/columnize v2.1.0+incompatible // indirect
 	github.com/shurcooL/sanitized_anchor_name v1.0.0 // indirect
 	golang.org/x/crypto v0.0.0-20191227163750-53104e6ec876 // indirect
