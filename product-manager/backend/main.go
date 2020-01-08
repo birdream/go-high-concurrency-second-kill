@@ -18,12 +18,12 @@ func main() {
 
 	app.Logger().SetLevel("debug")
 
-	template := iris.HTML("./backend/web/views", ".html").
+	template := iris.HTML("./web/views", ".html").
 		Layout("shared/layout.html").Reload(true)
 
 	app.RegisterView(template)
 
-	app.StaticWeb("/assets", "./backend/web/assets")
+	app.StaticWeb("/assets", "./web/assets")
 
 	// 出现异常跳转到指定页面
 	app.OnAnyErrorCode(func(ctx iris.Context) {
@@ -50,7 +50,7 @@ func main() {
 
 	//6.启动服务
 	app.Run(
-		iris.Addr("localhost:8080"),
+		iris.Addr("localhost:8081"),
 		iris.WithoutServerError(iris.ErrServerClosed),
 		iris.WithOptimizations,
 	)

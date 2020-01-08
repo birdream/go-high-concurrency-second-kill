@@ -2,12 +2,19 @@ package common
 
 import (
 	"database/sql"
+	"fmt"
 	_ "github.com/go-sql-driver/mysql"
 )
 
 //创建mysql 连接
 func NewMysqlConn() (db *sql.DB, err error) {
-	db, err = sql.Open("mysql", "root:imooc@tcp(127.0.0.1:3306)/imooc?charset=utf8")
+	db, err = sql.Open("mysql", "root:123456@tcp(localhost:3306)/imooc?charset=utf8")
+	fmt.Println("===================111====")
+	if err != nil {
+		fmt.Println("=======================")
+		fmt.Println("=======================")
+		fmt.Println(err)
+	}
 	return
 }
 
