@@ -25,9 +25,9 @@ type OrderMangerRepository struct {
 }
 
 // NewOrderMangerRepository get real order repo
-// func NewOrderMangerRepository(table string, sql *sql.DB) IOrderRepository {
-// 	return &OrderMangerRepository{table: table, mysqlConn: sql}
-// }
+func NewOrderMangerRepository(table string, sql *sql.DB) IOrderRepository {
+	return &OrderMangerRepository{table: table, mysqlConn: sql}
+}
 
 // Conn order db
 func (o *OrderMangerRepository) Conn() error {
