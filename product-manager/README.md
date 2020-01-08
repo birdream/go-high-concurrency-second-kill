@@ -19,6 +19,16 @@ CREATE TABLE `product` (
   `productUrl` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- create order table
+DROP TABLE IF EXISTS `order`;
+CREATE TABLE `order` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `userID` int(11) DEFAULT NULL,
+  `productID` int(11) DEFAULT NULL,
+  `orderStatus` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=274 DEFAULT CHARSET=utf8;
 ```
 
 ### start the project
