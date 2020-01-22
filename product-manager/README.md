@@ -8,6 +8,8 @@ docker ps -a
 
 ## remove container
 docker rm ${containerId}
+
+## docker run again
 ```
 
 ### get into the db manager create database
