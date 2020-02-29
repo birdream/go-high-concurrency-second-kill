@@ -14,6 +14,7 @@ docker rm ${containerId}
 
 ### get into the db manager create database
 ```sql
+# root 123456
 create database imooc;
 
 use imooc
@@ -36,6 +37,16 @@ CREATE TABLE `order` (
   `userID` int(11) DEFAULT NULL,
   `productID` int(11) DEFAULT NULL,
   `orderStatus` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=274 DEFAULT CHARSET=utf8;
+
+-- create user table
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `nickName` varchar(255) DEFAULT NULL,
+  `userName` varchar(255) DEFAULT NULL,
+  `HashPassword` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=274 DEFAULT CHARSET=utf8;
 ```

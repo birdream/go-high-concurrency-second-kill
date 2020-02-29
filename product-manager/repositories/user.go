@@ -14,7 +14,7 @@ type IUserRepository interface {
 	Insert(user *datamodels.User) (userId int64, err error)
 }
 
-func NewUserResposity(table string, db *sql.DB) IUserRepository {
+func NewUserRepository(table string, db *sql.DB) IUserRepository {
 	return &UserManagerRepository{table, db}
 }
 
