@@ -56,6 +56,10 @@ CREATE TABLE `user` (
 cd backend
 go build
 ./backend
+
+cd fronts
+go build
+./fronts
 ```
 
 ### visit the browser `localhost:8081`
