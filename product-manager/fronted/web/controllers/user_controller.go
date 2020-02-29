@@ -1,9 +1,9 @@
 package controllers
 
 import (
-	"imooc-product/datamodels"
-	"imooc-product/services"
-	"imooc-product/tool"
+	"product-manager/datamodels"
+	"product-manager/services"
+	"product-manager/tool"
 	"strconv"
 
 	"github.com/kataras/iris"
