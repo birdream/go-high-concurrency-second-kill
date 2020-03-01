@@ -4,7 +4,6 @@ import (
 	"context"
 
 	"product-manager/common"
-	"product-manager/fronted/middleware"
 	"product-manager/fronted/web/controllers"
 	"product-manager/repositories"
 	"product-manager/services"
@@ -30,7 +29,7 @@ func main() {
 	//4.设置模板
 	app.StaticWeb("/public", "./web/public")
 	//访问生成好的html静态文件
-	// app.StaticWeb("/html", "./web/htmlProductShow")
+	app.StaticWeb("/html", "./web/htmlProductShow")
 
 	//出现异常跳转到指定页面
 	app.OnAnyErrorCode(func(ctx iris.Context) {
@@ -64,7 +63,7 @@ func main() {
 	orderService := services.NewOrderService(order)
 	proProduct := app.Party("/product")
 	pro := mvc.New(proProduct)
-	proProduct.Use(middleware.AuthConProduct)
+	// proProduct.Use(middleware.AuthConProduct)
 	pro.Register(productService, orderService, sess.Start)
 	pro.Handle(new(controllers.ProductController))
 

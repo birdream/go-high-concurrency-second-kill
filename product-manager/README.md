@@ -63,3 +63,4 @@ go build
 ```
 
 ### visit the browser `localhost:8081`
+### visit the browser `localhost:8082/user/login`

@@ -2,6 +2,7 @@ package services
 
 import (
 	"errors"
+	"fmt"
 	"product-manager/datamodels"
 	"product-manager/repositories"
 
@@ -47,11 +48,11 @@ func (u *UserService) IsPwdSuccess(userName string, pwd string) (user *datamodel
 }
 
 func (u *UserService) AddUser(user *datamodels.User) (userId int64, err error) {
+	fmt.Println(user.HashPassword)
 	pwdByte, errPwd := GeneratePassword(user.HashPassword)
 	if errPwd != nil {
 		return userId, errPwd
 	}
 	user.HashPassword = string(pwdByte)
-
 	return u.UserRepository.Insert(user)
 }

@@ -27,14 +27,14 @@ func (c *UserController) PostRegister() {
 	var (
 		nickName = c.Ctx.FormValue("nickName")
 		userName = c.Ctx.FormValue("userName")
-		password = c.Ctx.FormValue("password")
+		passWord = c.Ctx.FormValue("passWord")
 	)
 	//ozzo-validation
 
 	user := &datamodels.User{
 		UserName:     userName,
 		NickName:     nickName,
-		HashPassword: password,
+		HashPassword: passWord,
 	}
 
 	_, err := c.Service.AddUser(user)
