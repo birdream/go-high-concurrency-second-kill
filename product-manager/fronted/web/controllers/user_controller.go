@@ -1,7 +1,9 @@
 package controllers
 
 import (
+	"fmt"
 	"product-manager/datamodels"
+	"product-manager/encrypt"
 	"product-manager/services"
 	"product-manager/tool"
 	"strconv"
@@ -66,7 +68,16 @@ func (c *UserController) PostLogin() mvc.Response {
 	}
 
 	tool.GlobalCookie(c.Ctx, "uid", strconv.FormatInt(user.ID, 10))
-	c.Session.Set("userID", strconv.FormatInt(user.ID, 10))
+	uidByte := []byte(strconv.FormatInt(user.ID, 10))
+	uidString, err := encrypt.EnPwdCode(uidByte)
+	if err != nil {
+		fmt.Println(err)
+	}
+	// c.Session.Set("userID", strconv.FormatInt(user.ID, 10))
+
+	//写入用户浏览器
+	tool.GlobalCookie(c.Ctx, "sign", uidString)
+
 	return mvc.Response{
 		Path: "/product/",
 	}
