@@ -69,7 +69,7 @@ func (u *UserManagerRepository) Insert(user *datamodels.User) (userId int64, err
 		return
 	}
 
-	sql := "INSERT " + u.table + " SET nickName=?,userName=?,passWord=?"
+	sql := "INSERT " + u.table + " SET nickName=?,userName=?,HashPassword=?"
 	stmt, errStmt := u.mysqlConn.Prepare(sql)
 	if errStmt != nil {
 		return userId, errStmt
