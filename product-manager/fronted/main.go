@@ -8,11 +8,8 @@ import (
 	"product-manager/repositories"
 	"product-manager/services"
 
-	"time"
-
 	"github.com/kataras/iris"
 	"github.com/kataras/iris/mvc"
-	"github.com/kataras/iris/sessions"
 	"github.com/prometheus/common/log"
 )
 
@@ -45,15 +42,15 @@ func main() {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 
-	sess := sessions.New(sessions.Config{
-		Cookie:  "helloword",
-		Expires: 60 * time.Minute,
-	})
+	// sess := sessions.New(sessions.Config{
+	// 	Cookie:  "helloword",
+	// 	Expires: 60 * time.Minute,
+	// })
 
 	user := repositories.NewUserRepository("user", db)
 	userService := services.NewService(user)
 	userPro := mvc.New(app.Party("/user"))
-	userPro.Register(userService, ctx, sess.Start)
+	userPro.Register(userService, ctx)
 	userPro.Handle(new(controllers.UserController))
 
 	// 注册product控制器
@@ -64,7 +61,7 @@ func main() {
 	proProduct := app.Party("/product")
 	pro := mvc.New(proProduct)
 	// proProduct.Use(middleware.AuthConProduct)
-	pro.Register(productService, orderService, sess.Start)
+	pro.Register(productService, orderService)
 	pro.Handle(new(controllers.ProductController))
 
 	app.Run(
